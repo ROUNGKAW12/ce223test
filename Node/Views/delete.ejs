@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beer Index</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+    <% if(typeof err != "undefined") { %>
+        <h1> <%= mesg %> </h1>
+    <% } %>
+    <h1>Beer Delete </h1>
+    <a href="/"> Click to return</a>
+   
+    <table id="table" >  
+        <thead>  
+            <tr>  
+                <th>select</th>  
+                <th>id</th>  
+                <th>name</th> 
+                <th>tagline</th> 
+                <th>description</th> 
+                <th>image</th> 
+            </tr>  
+        </thead>  
+         <tbody>  
+
+        <form action="/delete" method="post">
+         <% beers.forEach(function (items) { %>
+            <tr>  
+                <td><input type="radio" name="id" value=<%=items.id%> ></td>
+                <td><%= items.id %></td>  
+                <td><%= items.name %></td>
+                <td><%= items.tagline %></td>  
+                <td><%= items.description %></td>
+                <td><%= items.image %></td>  
+            </tr>                                   
+         <% }) %>
+         
+         </tbody>
+    </table>
+    <button type="submit">Delete</button>  
+</form>
+
+</body>
+</html>
